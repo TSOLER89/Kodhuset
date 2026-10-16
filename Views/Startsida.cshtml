@@ -6,17 +6,30 @@
 <head>
     <meta charset="utf-8">
     <title>@Model.Name</title>
+    <link rel="stylesheet" href="/css/site.css">
+
 </head>
 <body>
-    <h1>@Model.Name</h1>
+    <header>
+        <nav arial-label="Huvudmeny">
+             <ul>
+                @foreach (var projekt in Model.Children())
+                 {
+                     <li>
+                    <a href="@projekt.Url()">@projekt.Name</a>
+                </li>
+                }
+             </ul>
+        </nav>
+    </header>
 
-    <ul>
-    @foreach (var projekt in Model.Children())
-    {
-        <li>
-            <a href="@projekt.Url()">@projekt.Name</a>
-        </li>
-    }
-    </ul>
+    <main>
+        <h1> @Model.Name </h1>
+        <p> Välkommen till Kodhuset AB! </P>
+    </main>
+
+    <footer>
+        <p>&copy; @DateTime.Now.Year Kodhuset AB</p>
+    </footer>
 </body>
 </html>

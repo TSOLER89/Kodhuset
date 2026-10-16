@@ -13,6 +13,18 @@ header {
     background: v.$mork;
     padding: v.$steg 24px;
 
+    nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    @include m.mobil {
+        display: block;
+    }
+}
+
     nav a {
         color: v.$bakgrund;
         text-decoration: none;
