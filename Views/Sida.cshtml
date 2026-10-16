@@ -8,26 +8,45 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@Model.Name</title>
+    <link rel="stylesheet" href="/css/site.css">
 </head>
 
 <body>
+    <header>
+        <nav aria-label="Huvudmeny">
+            <ul>
+                @foreach (var sida in Model.Root().Children())
+                {
+                    <li>
+                        <a href="@sida.Url()">@sida.Name</a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    </header>
 
-    <h1>@Model.Name</h1>
+    <main>
+        <h1>@Model.Name</h1>
 
-    <div class="content">
-        @Model.Value("brDtext")
-    </div>
+        <div class="content">
+            @Model.Value("brDtext")
+        </div>
 
-    <ul>
-        @foreach (var barn in Model.Children())
-        {
-            <li>
-                <a href="@barn.Url()">@barn.Name</a>
-            </li>
-        }
-    </ul>
+        <ul>
+            @foreach (var barn in Model.Children())
+            {
+                <li>
+                    <a href="@barn.Url()">@barn.Name</a>
+                </li>
+            }
+        </ul>
+    </main>
 
+    <footer>
+        <p> &copy; @DateTime.Now.Year Kodhuset AB</p>
+    </footer>
 </body>
 
 </html>

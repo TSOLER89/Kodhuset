@@ -1,17 +1,57 @@
 ﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
-@{ Layout = null; }
+@{
+    Layout = null;
+}
 
 <!doctype html>
 <html lang="sv">
+
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@Model.Name</title>
+    <link rel="stylesheet" href="/css/site.css">
 </head>
-<body>
-    <h1>@Model.Name</h1>
-    @Model.Value("beskrivning")
 
-    <p><strong>Kund:</strong> @Model.Value("kund")</p>
-    <p><strong>Teknik:</strong> @string.Join(", ", Model.Value<IEnumerable<string>>("teknik") ?? new string[0])</p>
+<body>
+
+    <header>
+        <nav aria-label="Huvudmeny">
+            <ul>
+                @foreach (var sida in Model.Root().Children())
+                {
+                    <li>
+                        <a href="@sida.Url()">@sida.Name</a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>@Model.Name</h1>
+
+        <section class="kort">
+            @Model.Value("beskrivning")
+
+            <p>
+                <strong>Kund:</strong>
+                @Model.Value("kund")
+            </p>
+
+            <p>
+                <strong>Teknik:</strong>
+                @string.Join(", ", Model.Value<IEnumerable<string>>("teknik") ?? new string[0])
+            </p>
+        </section>
+
+        <a href="/kontakt/" class="knapp">Kontakta oss</a>
+
+    </main>
+
+    <footer>
+        <p>&copy; @DateTime.Now.Year Kodhuset AB</p>
+    </footer>
+
 </body>
 </html>
