@@ -1,0 +1,17 @@
+@use "variabler" as v;
+
+@mixin mobil {
+    @media (max-width: v.$brytpunkt) {
+        @content;
+    }
+}
+
+@mixin knapp($bakgrund, $textfarg) {
+    display: inline-block;
+    padding: 10px 20px;
+    background: $bakgrund;
+    color: $textfarg;
+    border: 2px solid v.$primar;
+    border-radius: v.$radie;
+    text-decoration: none;
+}
