@@ -1,0 +1,17 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{ Layout = null; }
+
+<!doctype html>
+<html lang="sv">
+<head>
+    <meta charset="utf-8">
+    <title>@Model.Name</title>
+</head>
+<body>
+    <h1>@Model.Name</h1>
+    @Model.Value("beskrivning")
+
+    <p><strong>Kund:</strong> @Model.Value("kund")</p>
+    <p><strong>Teknik:</strong> @string.Join(", ", Model.Value<IEnumerable<string>>("teknik") ?? new string[0])</p>
+</body>
+</html>

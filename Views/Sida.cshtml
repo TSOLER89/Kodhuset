@@ -1,0 +1,33 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="sv">
+
+<head>
+    <meta charset="utf-8">
+    <title>@Model.Name</title>
+</head>
+
+<body>
+
+    <h1>@Model.Name</h1>
+
+    <div class="content">
+        @Model.Value("brDtext")
+    </div>
+
+    <ul>
+        @foreach (var barn in Model.Children())
+        {
+            <li>
+                <a href="@barn.Url()">@barn.Name</a>
+            </li>
+        }
+    </ul>
+
+</body>
+
+</html>
