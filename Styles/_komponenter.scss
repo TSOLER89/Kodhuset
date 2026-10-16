@@ -1,0 +1,40 @@
+@use "variabler" as v;
+@use "mixins" as m;
+
+.knapp {
+    @include m.knapp(v.$primar, v.$bakgrund);
+
+    &:hover {
+        background: v.$primar-hover;
+        border-color: v.$primar-hover;
+    }
+
+    &.sekundar {
+        @include m.knapp(v.$bakgrund, v.$primar);
+
+        &:hover {
+            background: v.$primar;
+            color: v.$bakgrund;
+        }
+    }
+}
+
+.kort {
+    border: 1px solid v.$ram;
+    border-radius: v.$radie;
+    padding: v.$steg;
+    margin-bottom: v.$steg;
+    background: v.$ljus;
+
+    h2 {
+        margin-top: 0;
+    }
+
+    a {
+        color: v.$primar;
+
+        &:hover {
+            color: v.$primar-hover;
+        }
+    }
+}
