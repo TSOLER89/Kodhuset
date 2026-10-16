@@ -1,0 +1,74 @@
+@use "variabler" as v;
+@use "mixins" as m;
+
+body{
+    font-family: Arial, sans-serif;
+    color: v.$text;
+    background-color: v.$bakgrund;
+    margin: 0;
+    line-height: 1.5;
+}
+
+header {
+    background: v.$mork;
+    padding: v.$steg 24px;
+
+    nav a {
+        color: v.$bakgrund;
+        text-decoration: none;
+        margin-right: v.$steg;
+
+        &:hover {
+            color: v.$accent;
+        }
+
+        @include m.mobil {
+            display: block;
+            margin: 8px 0;
+        }
+    }
+}
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 24px;
+
+    @include m.mobil {
+        padding: 12px;
+    }
+}
+
+h1 {
+    color: v.$text;
+    font-size: 32px;
+
+    @include m.mobil {
+        font-size: 26px;
+    }
+}
+
+h2 {
+    color: v.$text;
+    font-size: 22px;
+}
+
+footer {
+    background: v.$mork;
+    color: v.$bakgrund;
+    padding: v.$steg 24px;
+
+    a {
+        color: v.$bakgrund;
+    }
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid v.$primar;
+    outline-offset: 2px;
+}
+
+header a:focus-visible,
+footer a:focus-visible {
+    outline-color: v.$bakgrund;
+}
