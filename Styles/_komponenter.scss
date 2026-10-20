@@ -9,15 +9,15 @@
         border-color: v.$primar-hover;
     }
 
-&.sekundar {
-    background: v.$bakgrund;
-    color: v.$primar;
+    &.sekundar {
+        background: v.$bakgrund;
+        color: v.$primar;
 
-    &:hover {
-        background: v.$primar;
-        color: v.$bakgrund;
+        &:hover {
+            background: v.$primar;
+            color: v.$bakgrund;
+        }
     }
-}
 }
 
 .kort {
@@ -29,6 +29,14 @@
 
     h2 {
         margin-top: 0;
+    }
+
+    > :first-child {
+        margin-top: 0;
+    }
+
+    > :last-child {
+        margin-bottom: 0;
     }
 
     a:not(.knapp) {

@@ -18,7 +18,11 @@ img {
     overflow-wrap: break-word;
 }
 
-body{
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100dvh;
     font-family: Arial, sans-serif;
     color: v.$text;
     background-color: v.$bakgrund;
@@ -30,46 +34,58 @@ header {
     background: v.$mork;
     padding: v.$steg 24px;
 
-    nav ul {
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-
-    @include m.mobil {
-        display: block;
+    nav {
+        max-width: 1120px;
+        margin: 0 auto;
     }
-}
+
+    nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 20px;
+        align-items: center;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        @include m.mobil {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 4px;
+        }
+    }
 
     nav a {
+        display: block;
+        padding: 8px 0;
         color: v.$bakgrund;
         text-decoration: none;
-        margin-right: v.$steg;
 
         &:hover {
             color: v.$accent;
         }
 
-        @include m.mobil {
-            display: block;
-            margin: 8px 0;
-        }
     }
 }
 main {
+    flex: 1;
+    width: 100%;
+    min-width: 0;
     max-width: 800px;
     margin: 0 auto;
-    padding: 24px;
+    padding: 48px 24px;
+    overflow-wrap: break-word;
 
     @include m.mobil {
-        padding: 12px;
+        padding: 32px 20px;
     }
 }
 
 h1 {
+    margin: 0 0 24px;
     color: v.$text;
     font-size: 32px;
+    line-height: 1.2;
 
     @include m.mobil {
         font-size: 26px;
@@ -81,10 +97,28 @@ h2 {
     font-size: 22px;
 }
 
+main a:not(.knapp) {
+    color: v.$primar;
+    text-underline-offset: 3px;
+
+    &:hover {
+        color: v.$primar-hover;
+    }
+}
+
+main li + li {
+    margin-top: 8px;
+}
+
 footer {
     background: v.$mork;
     color: v.$bakgrund;
     padding: v.$steg 24px;
+
+    p {
+        max-width: 1120px;
+        margin: 0 auto;
+    }
 
     a {
         color: v.$bakgrund;
