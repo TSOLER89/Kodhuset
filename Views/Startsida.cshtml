@@ -1,25 +1,30 @@
 ﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
-@{ Layout = null; }
+@{
+    Layout = null;
+}
 
 <!doctype html>
 <html lang="sv">
+
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@Model.Name</title>
     <link rel="stylesheet" href="/css/site.css">
 
 </head>
+
 <body>
     <header>
         <nav arial-label="Huvudmeny">
-             <ul>
+            <ul>
                 @foreach (var projekt in Model.Children())
-                 {
-                     <li>
-                    <a href="@projekt.Url()">@projekt.Name</a>
-                </li>
+                {
+                    <li>
+                        <a href="@projekt.Url()">@projekt.Name</a>
+                    </li>
                 }
-             </ul>
+            </ul>
         </nav>
     </header>
 
@@ -32,4 +37,5 @@
         <p>&copy; @DateTime.Now.Year Kodhuset AB</p>
     </footer>
 </body>
+
 </html>

@@ -9,14 +9,15 @@
         border-color: v.$primar-hover;
     }
 
-    &.sekundar {
-        @include m.knapp(v.$bakgrund, v.$primar);
+&.sekundar {
+    background: v.$bakgrund;
+    color: v.$primar;
 
-        &:hover {
-            background: v.$primar;
-            color: v.$bakgrund;
-        }
+    &:hover {
+        background: v.$primar;
+        color: v.$bakgrund;
     }
+}
 }
 
 .kort {
@@ -30,7 +31,7 @@
         margin-top: 0;
     }
 
-    a {
+    a:not(.knapp) {
         color: v.$primar;
 
         &:hover {
