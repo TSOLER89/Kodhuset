@@ -1,0 +1,74 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using Umbraco.Extensions
+
+@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>@Model.Name - Kodhuset AB</title>
+
+	<style>
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f5f7fa;
+				color: #1e293b;
+				margin: 0;
+				padding: 40px 20px;
+			}
+
+			.faq-container {
+				max-width: 800px;
+				margin: 40px auto;
+				background: white;
+				padding: 40px;
+				border-radius: 12px;
+				box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+			}
+
+			h1 {
+				color: #1e3a5f;
+			}
+
+			.category {
+				color: #2563eb;
+				font-weight: bold;
+			}
+
+			.back-link {
+				display: inline-block;
+				margin-top: 30px;
+				color: #2563eb;
+			}
+	</style>
+</head>
+
+<body>
+
+	<main class="faq-container">
+
+		<p class="category">
+			Kategori: @Model.Value("kategori")
+		</p>
+
+		<h1>@Model.Value("fraga")</h1>
+
+		<div class="faq-answer">
+			@Model.Value("svar")
+		</div>
+
+		<a href="/" class="back-link">
+			← Tillbaka till startsidan
+		</a>
+
+	</main>
+
+</body>
+
+</html>
