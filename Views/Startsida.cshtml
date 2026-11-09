@@ -1,6 +1,9 @@
 ﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 @{
     Layout = null;
+    var questions = Model.DescendantsOfType("vanligFrGa")
+        .Where(question => question.IsPublished() && question.HasValue("fraga"))
+        .ToList();
 }
 
 <!doctype html>
@@ -18,11 +21,18 @@
     <header>
         <nav aria-label="Huvudmeny">
             <ul>
-                @foreach (var projekt in Model.Children())
+                @{
+                    var home = Model.Root();
+                    var navigationPages = home.Children().ToList();
+                }
+                <li><a href="@home.Url()">Kodhuset AB</a></li>
+                @foreach (var label in new[] { "Tjänster", "Projekt", "Om oss", "Kontakt" })
                 {
-                    <li>
-                        <a href="@projekt.Url()">@projekt.Name</a>
-                    </li>
+                    var navigationPage = navigationPages.FirstOrDefault(p => string.Equals(p.Name, label, StringComparison.OrdinalIgnoreCase));
+                    if (navigationPage != null)
+                    {
+                        <li><a href="@navigationPage.Url()">@navigationPage.Name</a></li>
+                    }
                 }
             </ul>
         </nav>
@@ -31,6 +41,18 @@
     <main>
         <h1> @Model.Name </h1>
         <p> Välkommen till Kodhuset AB! </P>
+        @if (questions.Count > 0)
+        {
+            <section aria-labelledby="faq-heading">
+                <h2 id="faq-heading">Vanliga frågor</h2>
+                <div class="faq-cards">
+                    @foreach (var question in questions)
+                    {
+                        <a class="kort faq-card" href="@question.Url()">@question.Value("fraga")</a>
+                    }
+                </div>
+            </section>
+        }
     </main>
 
     <footer>

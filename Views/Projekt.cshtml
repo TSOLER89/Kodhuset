@@ -18,11 +18,18 @@
     <header>
         <nav aria-label="Huvudmeny">
             <ul>
-                @foreach (var sida in Model.Root().Children())
+                @{
+                    var home = Model.Root();
+                    var navigationPages = home.Children().ToList();
+                }
+                <li><a href="@home.Url()">Kodhuset AB</a></li>
+                @foreach (var label in new[] { "Tjänster", "Projekt", "Om oss", "Kontakt" })
                 {
-                    <li>
-                        <a href="@sida.Url()">@sida.Name</a>
-                    </li>
+                    var navigationPage = navigationPages.FirstOrDefault(p => string.Equals(p.Name, label, StringComparison.OrdinalIgnoreCase));
+                    if (navigationPage != null)
+                    {
+                        <li><a href="@navigationPage.Url()">@navigationPage.Name</a></li>
+                    }
                 }
             </ul>
         </nav>

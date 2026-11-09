@@ -26,8 +26,8 @@
     border: 1px solid v.$ram;
     border-top: 3px solid v.$primar;
     border-radius: v.$radie;
-    padding: 32px;
-    margin-bottom: 28px;
+    padding: 24px;
+    margin-bottom: 20px;
     background: v.$ljus;
     box-shadow: v.$skugga;
     color: v.$text-dampad;
@@ -45,5 +45,22 @@
         &:hover { color: v.$primar-hover; }
     }
 
-    @include m.mobil { padding: 24px 20px; }
+    @include m.mobil { padding: 20px; }
+}
+
+.faq-cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+
+    @include m.mobil { grid-template-columns: 1fr; }
+}
+
+.faq-card {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+    font-weight: 600;
+
+    &:hover { background: v.$bakgrund; }
 }
