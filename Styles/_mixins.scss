@@ -7,11 +7,18 @@
 }
 
 @mixin knapp($bakgrund, $textfarg) {
-    display: inline-block;
-    padding: 10px 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    max-width: 100%;
+    padding: 12px 24px;
     background: $bakgrund;
     color: $textfarg;
     border: 2px solid v.$primar;
     border-radius: v.$radie;
     text-decoration: none;
+    font-weight: 600;
+    line-height: 1.4;
+    text-align: center;
 }

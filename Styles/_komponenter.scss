@@ -1,8 +1,9 @@
-@use "variabler" as v;
+﻿@use "variabler" as v;
 @use "mixins" as m;
 
 .knapp {
     @include m.knapp(v.$primar, v.$bakgrund);
+    box-shadow: 0 3px 8px rgba(v.$primar, 0.12);
 
     &:hover {
         background: v.$primar-hover;
@@ -12,6 +13,7 @@
     &.sekundar {
         background: v.$bakgrund;
         color: v.$primar;
+        box-shadow: none;
 
         &:hover {
             background: v.$primar;
@@ -22,28 +24,26 @@
 
 .kort {
     border: 1px solid v.$ram;
+    border-top: 3px solid v.$primar;
     border-radius: v.$radie;
-    padding: v.$steg;
-    margin-bottom: v.$steg;
+    padding: 32px;
+    margin-bottom: 28px;
     background: v.$ljus;
+    box-shadow: v.$skugga;
+    color: v.$text-dampad;
 
-    h2 {
-        margin-top: 0;
-    }
+    strong { color: v.$text; }
 
-    > :first-child {
-        margin-top: 0;
-    }
+    h2 { margin-top: 0; }
 
-    > :last-child {
-        margin-bottom: 0;
-    }
+    > :first-child { margin-top: 0; }
+    > :last-child { margin-bottom: 0; }
 
     a:not(.knapp) {
         color: v.$primar;
 
-        &:hover {
-            color: v.$primar-hover;
-        }
+        &:hover { color: v.$primar-hover; }
     }
+
+    @include m.mobil { padding: 24px 20px; }
 }
